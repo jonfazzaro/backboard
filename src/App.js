@@ -27,7 +27,7 @@ function App(props) {
         </Col>
         <Col md={4}>
           <Form onSubmit={enter}>
-            <Form.Control inline type="text" placeholder="Search query"
+            <Form.Control inline="true" type="text" placeholder="Search query"
               value={query} onChange={(e) => setQuery(e.target.value)} />
           </Form>
         </Col>
@@ -67,13 +67,13 @@ function App(props) {
     trello("search", `cards_limit=1000&query=${query}`)
       .then(d => {
         setData(d)
-        localStorage.setItem(key, JSON.stringify(d));
+        sessionStorage.setItem(key, JSON.stringify(d));
       });
   }
 
   function load() {
     const key = query;
-    let cachedData = localStorage.getItem(key);
+    let cachedData = sessionStorage.getItem(key);
     if (cachedData)
       setData(JSON.parse(cachedData));
     else
