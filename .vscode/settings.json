@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/3a7033d1-3f35-415a-b31a-e60d3c9fc124/resourceGroups/gemba/providers/Microsoft.Web/sites/gembello",
+    "appService.deploySubpath": "build"
+}
