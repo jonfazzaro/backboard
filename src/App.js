@@ -3,6 +3,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import { ButtonGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import Group from './Group';
+import cards from './domain/cards';
 import './App.css';
 
 function App(props) {
@@ -63,21 +64,11 @@ function App(props) {
     }[grouping];
   }
 
-  function loadFromApi(key) {
-    trello("search", `cards_limit=1000&query=${query}`)
-      .then(d => {
-        setData(d)
-        sessionStorage.setItem(key, JSON.stringify(d));
-      });
-  }
-
   function load() {
-    const key = query;
-    let cachedData = sessionStorage.getItem(key);
-    if (cachedData)
-      setData(JSON.parse(cachedData));
-    else
-      loadFromApi(key);
+    cards.load(trelloKey, trelloToken, query)
+      .then(results => {
+        setData(results);
+      })
   }
 
   function month(number) {
@@ -98,14 +89,6 @@ function App(props) {
       });
   }
 
-  function trello(resource, query) {
-    if (!trelloKey || !trelloToken || !query)
-      return Promise.resolve([]);
-
-    const uri = `https://api.trello.com/1/${resource}?${query}&key=${trelloKey}&token=${trelloToken}`;
-    return fetch(uri)
-      .then(r => r.json());
-  }
 }
 
 export default App;

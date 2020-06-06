@@ -10,7 +10,7 @@ describe("The cards service", () => {
             beforeEach((done) => {
                 cache.get.and.returnValue("[{}, {}]");
                 api.fetch.and.returnValue(Promise.resolve([{}, {}, {}]));
-                subject.load("a-key", "a-token", "a-resource", "a-query")
+                subject.load("a-key", "a-token", "a-query", 100)
                     .then(r => {
                         result = r;
                         done();
@@ -33,7 +33,7 @@ describe("The cards service", () => {
         describe("given no cached data", () => {
             beforeEach(done => {
                 api.fetch.and.returnValue(Promise.resolve([{}, {}, {}]));
-                subject.load("a-key", "a-token", "a-resource", "a-query")
+                subject.load("a-key", "a-token", "a-query", 100)
                     .then(r => {
                         expect(r).toEqual([{}, {}, {}]);
                         done();
@@ -41,7 +41,7 @@ describe("The cards service", () => {
             });
 
             it("calls the Trello API", () => {
-                const uri = "https://api.trello.com/1/a-resource?a-query&key=a-key&token=a-token"
+                const uri = "https://api.trello.com/1/search?cards_limit=100&query=a-query&key=a-key&token=a-token"
                 expect(api.fetch).toHaveBeenCalledWith(uri);
             });
 
@@ -49,10 +49,9 @@ describe("The cards service", () => {
                 expect(cache.set).toHaveBeenCalledWith("a-query", [{}, {}, {}]);
             });
 
-            expectEmpty("key", null, "a-token", "a-resource", "a-query");
-            expectEmpty("token", "a-key", null, "a-resource", "a-query");
-            expectEmpty("resource", "a-key", "a-token", null, "a-query");
-            expectEmpty("query", "a-key", "a-token", "a-resource", null);
+            expectEmpty("key", null, "a-token", "a-query");
+            expectEmpty("token", "a-key", null, "a-query");
+            expectEmpty("query", "a-key", "a-token", null);
 
             function expectEmpty(field, key, token, resource, query) {
                 describe("given no " + field, () => {
