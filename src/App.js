@@ -1,9 +1,8 @@
 import React from 'react';
-import moment from 'moment';
-import _ from 'lodash';
 import { ButtonGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import Group from './Group';
 import cards from './domain/cards';
+import group from './domain/grouping';
 import './App.css';
 
 function App(props) {
@@ -47,7 +46,7 @@ function App(props) {
       </Row>
     </div>
 
-    {group(data.cards, grouping)
+    {group.by(data.cards, grouping)
       .map((g, key) => <Group key={key} title={g.title} cards={g.items} />)}
   </div>
 
@@ -62,39 +61,6 @@ function App(props) {
         setData(results);
       })
   }
-}
-
-function group(items, grouping) {
-  return Object.entries(_.groupBy(items,
-    (d) => moment(d.dateLastActivity).format(grouping)))
-    .map(([k, i]) => {
-      return {
-        title: title(k, grouping),
-        items: i
-      };
-    });
-}
-
-function title(key, by) {
-  return {
-    "W": "Week of " + monday(key),
-    "M": month(key),
-    "Q": "Q" + key
-  }[by];
-}
-
-function month(number) {
-  return moment()
-    .date(1)
-    .month(number - 1)
-    .format("MMMM yyyy");
-}
-
-function monday(number) {
-  return moment()
-    .day("Monday")
-    .week(number)
-    .format("MMMM D");
 }
 
 export default App;
