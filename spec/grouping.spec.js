@@ -1,7 +1,4 @@
-fdescribe("The cards service", () => {
-    it("exists", () => {
-        expect(subject).toBeDefined();
-    });
+describe("The grouping service", () => {
 
     describe("given an empty list", () => {
         it("returns an empty list", () => {
@@ -56,5 +53,6 @@ fdescribe("The cards service", () => {
     beforeEach(() => {
         subject = require("../src/domain/grouping");
     });
+
     let subject;
 });
