@@ -46,7 +46,7 @@ describe("The cards service", () => {
             });
 
             it("caches the results", () => {
-                expect(cache.set).toHaveBeenCalledWith("a-query", [{}, {}, {}]);
+                expect(cache.set).toHaveBeenCalledWith("a-query", JSON.stringify([{}, {}, {}]));
             });
 
             expectEmpty("key", null, "a-token", "a-query");

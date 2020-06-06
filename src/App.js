@@ -47,21 +47,13 @@ function App(props) {
       </Row>
     </div>
 
-    {group(data.cards, (d) => moment(d.dateLastActivity).format(grouping))
-      .map((g, key) => <Group key={key} title={title(g)} cards={g.items} />)}
+    {group(data.cards, grouping)
+      .map((g, key) => <Group key={key} title={g.title} cards={g.items} />)}
   </div>
 
   function enter(e) {
     load();
     e.preventDefault();
-  }
-
-  function title(g) {
-    return {
-      "W": "Week of " + monday(g.key),
-      "M": month(g.key),
-      "Q": "Q" + g.key
-    }[grouping];
   }
 
   function load() {
@@ -70,25 +62,39 @@ function App(props) {
         setData(results);
       })
   }
+}
 
-  function month(number) {
-    return moment().date(1).month(number - 1).format("MMMM yyyy");
-  }
+function group(items, grouping) {
+  return Object.entries(_.groupBy(items,
+    (d) => moment(d.dateLastActivity).format(grouping)))
+    .map(([k, i]) => {
+      return {
+        title: title(k, grouping),
+        items: i
+      };
+    });
+}
 
-  function monday(number) {
-    return moment().day("Monday").week(number).format("MMMM D");
-  }
+function title(key, by) {
+  return {
+    "W": "Week of " + monday(key),
+    "M": month(key),
+    "Q": "Q" + key
+  }[by];
+}
 
-  function group(items, by) {
-    return Object.entries(_.groupBy(items, by))
-      .map(([k, i]) => {
-        return {
-          key: k,
-          items: i
-        };
-      });
-  }
+function month(number) {
+  return moment()
+    .date(1)
+    .month(number - 1)
+    .format("MMMM yyyy");
+}
 
+function monday(number) {
+  return moment()
+    .day("Monday")
+    .week(number)
+    .format("MMMM D");
 }
 
 export default App;

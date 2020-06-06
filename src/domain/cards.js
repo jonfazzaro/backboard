@@ -17,7 +17,7 @@ function loadFromApi(key, token, query, limit) {
 
     const uri = `https://api.trello.com/1/search?cards_limit=${limit || 1000}&query=${query}&key=${key}&token=${token}`;
     return api.fetch(uri).then(r => {
-        cache.set(query, r)
+        cache.set(query, JSON.stringify(r))
         return r;
     });
 }
