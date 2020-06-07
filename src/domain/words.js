@@ -31,10 +31,10 @@ function wordsFrom(card) {
         .filter(w => alphaNumeric.test(w.trim()));
 }
 
-function top(items) {
+function top(items, count) {
     return _.chain(Object.entries(_.countBy(items, i => i.toLowerCase())))
         .orderBy(([k, c]) => c, 'desc')
-        .take(10)
+        .take(count || 10)
         .value()
         .map(([k, c]) => {
             return {

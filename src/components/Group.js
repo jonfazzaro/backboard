@@ -12,7 +12,9 @@ function Group(props) {
         <Pie cards={props.cards} size={50} />
         <div className="header">
             <h2>{props.title}</h2>
-            <small onClick={() => setShowCards(!showCards)}>{props.cards.length} cards</small>
+            <small onClick={() => setShowCards(!showCards)}>
+                {props.cards.length} cards
+            </small>
         </div>
         <br />
 
@@ -23,8 +25,8 @@ function Group(props) {
             </ul>
             :
             <div>
-                <Cloud words={words.prefixes(props.cards)} />
-                <Cloud words={words.words(props.cards)} />
+                <Cloud words={words.prefixes(props.cards)
+                    .concat(words.words(props.cards))} />
             </div>
         }
 

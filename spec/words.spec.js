@@ -33,6 +33,14 @@ describe("The words service", () => {
                 { text: 'spring', value: 1 }
             ]);
         });
+
+        it("gets the top 3 words", () => {
+            expect(subject.top(subject.words(cards), 3)).toEqual([
+                { text: 'billions', value: 6 },
+                { text: 'upon', value: 6 },
+                { text: 'prefix', value: 2 },
+            ]);
+        });
     });
 
     const ketchup = { name: "Ketchup" };
