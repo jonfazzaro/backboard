@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import C3Chart from 'react-c3js';
-import words from '../src/domain/words';
+import words from '../domain/words';
 import 'c3/c3.css';
 
 function Pie(props) {

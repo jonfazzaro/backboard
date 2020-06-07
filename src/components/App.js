@@ -1,8 +1,8 @@
 import React from 'react';
 import { ButtonGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import Group from './Group';
-import cards from './domain/cards';
-import group from './domain/grouping';
+import cards from '../domain/cards';
+import group from '../domain/grouping';
 import './App.css';
 
 function App(props) {

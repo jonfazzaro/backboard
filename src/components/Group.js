@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import words from '../src/domain/words';
+import words from '../domain/words';
 import Cloud from './Cloud';
 import Card from './Card';
 import Pie from './Pie';
