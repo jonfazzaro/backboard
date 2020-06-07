@@ -2,12 +2,12 @@ import React from 'react';
 import { ButtonGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import Group from './Group';
 import cards from '../domain/cards';
-import group from '../domain/grouping';
+import grouping from '../domain/grouping';
 import './App.css';
 
 function App(props) {
   const [data, setData] = React.useState({ cards: [] });
-  const [grouping, setGrouping] = React.useState("W");
+  const [groupBy, setGroupBy] = React.useState("W");
   const [query, setQuery] = React.useState("board:Work list:Done is:archived edited:90")
   const [trelloKey, setTrelloKey] = React.useState("");
   const [trelloToken, setTrelloToken] = React.useState("");
@@ -20,9 +20,9 @@ function App(props) {
       <Row>
         <Col>
           <ButtonGroup aria-label="Grouping">
-            <Button variant="secondary" onClick={() => setGrouping("W")}>Week</Button>
-            <Button variant="secondary" onClick={() => setGrouping("M")}>Month</Button>
-            <Button variant="secondary" onClick={() => setGrouping("Q")}>Quarter</Button>
+            <Button variant="secondary" onClick={() => setGroupBy("W")}>Week</Button>
+            <Button variant="secondary" onClick={() => setGroupBy("M")}>Month</Button>
+            <Button variant="secondary" onClick={() => setGroupBy("Q")}>Quarter</Button>
           </ButtonGroup>
         </Col>
         <Col md={4}>
@@ -46,7 +46,7 @@ function App(props) {
       </Row>
     </div>
 
-    {group.by(data.cards, grouping)
+    {grouping.by(data.cards, groupBy)
       .map((g, key) => <Group key={key} title={g.title} cards={g.items} />)}
   </div>
 

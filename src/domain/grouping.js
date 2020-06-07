@@ -1,7 +1,7 @@
 const _ = require('lodash');
 const moment = require('moment');
 
-module.exports = { by }
+module.exports = { by };
 
 function by(items, grouping) {
     return Object.entries(_.groupBy(items,
