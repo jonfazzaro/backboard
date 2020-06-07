@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import { countBy } from 'lodash';
 import C3Chart from 'react-c3js';
 import 'c3/c3.css';
 
@@ -9,7 +9,7 @@ function Pie(props) {
     return <div className="pie">
         <C3Chart
             data={{
-                columns: Object.entries(_.countBy(words.tags(props.cards))),
+                columns: Object.entries(countBy(words.tags(props.cards))),
                 type: 'pie',
                 colors: {
                     "Deliver Value Continuously": '#a3d96f',

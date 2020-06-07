@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import { orderBy } from 'lodash';
 import Cloud from './Cloud';
 import Card from './Card';
 import Pie from './Pie';
@@ -35,7 +35,7 @@ function Group(props) {
 }
 
 function sorted(cards) {
-    return _.orderBy(cards, 'dateLastActivity', 'desc');
+    return orderBy(cards, 'dateLastActivity', 'desc');
 }
 
 export default Group;

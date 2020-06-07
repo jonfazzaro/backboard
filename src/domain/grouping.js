@@ -1,10 +1,10 @@
-const _ = require('lodash');
+const { groupBy } = require('lodash');
 const moment = require('moment');
 
 module.exports = { by };
 
 function by(items, grouping) {
-    return Object.entries(_.groupBy(items,
+    return Object.entries(groupBy(items,
         (d) => moment(d.dateLastActivity).format(grouping)))
         .map(([k, i]) => {
             return {

@@ -1,9 +1,9 @@
-const _ = require('lodash');
+const { flatten, chain, countBy } = require('lodash');
 
 module.exports = { tags, prefixes, words, top }
 
 function tags(cards) {
-    return _.flatten(
+    return flatten(
         cards.map(c => c.labels))
         .map(l => l.name);
 }
@@ -20,7 +20,7 @@ function prefix(card) {
 }
 
 function words(cards) {
-    return _.flatten(cards.map(wordsFrom)).filter(w => !!w);
+    return flatten(cards.map(wordsFrom)).filter(w => !!w);
 }
 
 function wordsFrom(card) {
@@ -32,7 +32,7 @@ function wordsFrom(card) {
 }
 
 function top(items, count) {
-    return _.chain(Object.entries(_.countBy(items, i => i.toLowerCase())))
+    return chain(Object.entries(countBy(items, i => i.toLowerCase())))
         .orderBy(([k, c]) => c, 'desc')
         .take(count || 10)
         .value()
