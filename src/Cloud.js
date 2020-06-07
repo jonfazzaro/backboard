@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactWordCloud from 'react-wordcloud';
-import _ from 'lodash';
+import words from '../src/domain/words';
 
 function Cloud(props) {
-    const data = counts(props.words);
+    const data = words.top(props.words);
     return <div className="cloud">
         <ReactWordCloud words={data}
             options={{
@@ -19,19 +19,5 @@ function Cloud(props) {
         />
     </div>
 }
-
-function counts(items) {
-    return _.chain(Object.entries(_.countBy(items.filter(i => !!i), i => i.toLowerCase())))
-        .orderBy(([k, c]) => c, 'desc')
-        .take(10)
-        .value()
-        .map(([k, c]) => {
-            return {
-                text: k,
-                value: c
-            };
-        });
-}
-
 
 export default Cloud;
