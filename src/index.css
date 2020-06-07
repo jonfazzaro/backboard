@@ -34,15 +34,32 @@ li {
 }
 
 .cardlist {
-  column-count: 4;
   width: 100%;
   padding: 1rem;
+}
+
+@media(min-width: 768px){
+  .cardlist {
+    column-count: 2;
+  }
+}
+
+@media(min-width: 1024px){
+  .cardlist {
+    column-count: 3;
+  }
+}
+
+@media(min-width: 1440px){
+  .cardlist {
+    column-count: 4;
+  }
 }
 
 .truncated {
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 15rem;
+  width: 100%;
   white-space: nowrap;
 }
 

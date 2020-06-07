@@ -3,7 +3,6 @@ import { ButtonGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import grouping from "../domain/grouping";
 import cards from "../domain/cards";
 import Group from './Group';
-import './App.css';
 
 function App(props) {
   const [data, setData] = React.useState({ cards: [] });
