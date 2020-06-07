@@ -1,7 +1,7 @@
-const api = require('./api');
-const cache = require('./cache');
+import api from './api';
+import cache from './cache';
 
-module.exports = { load };
+export default { load };
 
 function load(key, token, query, limit) {
     let cachedData = cache.get(query);

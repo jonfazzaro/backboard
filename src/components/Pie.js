@@ -3,7 +3,7 @@ import { countBy } from 'lodash';
 import C3Chart from 'react-c3js';
 import 'c3/c3.css';
 
-const words = require('../domain/words');
+import words from "../domain/words";
 
 function Pie(props) {
     return <div className="pie">

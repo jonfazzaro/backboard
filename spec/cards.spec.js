@@ -1,5 +1,6 @@
-const api = require("../src/domain/api");
-const cache = require("../src/domain/cache");
+import api from "../src/domain/api";
+import cache from "../src/domain/cache";
+import subject from "../src/domain/cards";
 
 describe("The cards service", () => {
 
@@ -7,14 +8,10 @@ describe("The cards service", () => {
 
         describe("given cached data", () => {
             let result;
-            beforeEach((done) => {
+            beforeEach(async () => {
                 cache.get.and.returnValue("[{}, {}]");
                 api.fetch.and.returnValue(Promise.resolve([{}, {}, {}]));
-                subject.load("a-key", "a-token", "a-query", 100)
-                    .then(r => {
-                        result = r;
-                        done();
-                    });
+                result = await subject.load("a-key", "a-token", "a-query", 100)
             });
 
             it("uses the query as the cache key", () => {
@@ -31,13 +28,10 @@ describe("The cards service", () => {
         });
 
         describe("given no cached data", () => {
-            beforeEach(done => {
+            beforeEach(async () => {
                 api.fetch.and.returnValue(Promise.resolve([{}, {}, {}]));
-                subject.load("a-key", "a-token", "a-query", 100)
-                    .then(r => {
-                        expect(r).toEqual([{}, {}, {}]);
-                        done();
-                    });
+                const result = await subject.load("a-key", "a-token", "a-query", 100)
+                expect(result).toEqual([{}, {}, {}]);
             });
 
             it("calls the Trello API", () => {
@@ -55,13 +49,10 @@ describe("The cards service", () => {
 
             function expectEmpty(field, key, token, resource, query) {
                 describe("given no " + field, () => {
-                    it("returns an empty promise", (done) => {
+                    it("returns an empty promise", async () => {
                         api.fetch.calls.reset();
-                        subject.load(key, token, resource, query)
-                            .then(r => {
-                                expect(r).toEqual([]);
-                                done();
-                            });
+                        const result = await subject.load(key, token, resource, query)
+                        expect(result).toEqual([]);
                         expect(api.fetch).not.toHaveBeenCalled();
                     });
                 });
@@ -74,8 +65,6 @@ describe("The cards service", () => {
         spyOn(api, 'fetch');
         spyOn(cache, 'get').and.returnValue(null);
         spyOn(cache, 'set');
-        subject = require('../src/domain/cards');
     });
 
-    let subject;
 });

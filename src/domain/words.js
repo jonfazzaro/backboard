@@ -1,6 +1,6 @@
-const { flatten, chain, countBy } = require('lodash');
+import { flatten, chain, countBy } from 'lodash';
 
-module.exports = { tags, prefixes, words, top }
+export default { tags, prefixes, words, top }
 
 function tags(cards) {
     return flatten(

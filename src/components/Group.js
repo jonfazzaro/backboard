@@ -1,10 +1,9 @@
 import React from 'react';
 import { orderBy } from 'lodash';
+import words from "../domain/words";
 import Cloud from './Cloud';
 import Card from './Card';
 import Pie from './Pie';
-
-const words = require('../domain/words');
 
 function Group(props) {
     const [showCards, setShowCards] = React.useState(false);

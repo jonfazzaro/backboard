@@ -1,3 +1,5 @@
+import subject from '../src/domain/words';
+
 describe("The words service", () => {
 
     describe("given a list of cards", () => {
@@ -87,9 +89,4 @@ describe("The words service", () => {
         'upon'
     ]
 
-    beforeEach(() => {
-        subject = require("../src/domain/words");
-    });
-
-    let subject;
 });

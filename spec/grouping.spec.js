@@ -1,3 +1,5 @@
+import subject from "../src/domain/grouping";
+
 describe("The grouping service", () => {
 
     describe("given an empty list", () => {
@@ -50,9 +52,4 @@ describe("The grouping service", () => {
         });
     });
 
-    beforeEach(() => {
-        subject = require("../src/domain/grouping");
-    });
-
-    let subject;
 });

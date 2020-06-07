@@ -1,7 +1,7 @@
-const { groupBy } = require('lodash');
-const moment = require('moment');
+import { groupBy } from 'lodash';
+import moment from 'moment';
 
-module.exports = { by };
+export default { by };
 
 function by(items, grouping) {
     return Object.entries(groupBy(items,

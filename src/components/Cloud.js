@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactWordCloud from 'react-wordcloud';
 
-const words = require('../domain/words');
+import words from "../domain/words";
 
 function Cloud(props) {
     const data = words.top(props.words, 100);
