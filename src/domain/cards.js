@@ -1,15 +1,15 @@
 const api = require('./api');
 const cache = require('./cache');
 
-module.exports = {
-    load: (key, token, query, limit) => {
-        let cachedData = cache.get(query);
-        if (cachedData)
-            return Promise.resolve(JSON.parse(cachedData));
-        else
-            return loadFromApi(key, token, query, limit);
-    }
-};
+module.exports = { load };
+
+function load(key, token, query, limit) {
+    let cachedData = cache.get(query);
+    if (cachedData)
+        return Promise.resolve(JSON.parse(cachedData));
+    else
+        return loadFromApi(key, token, query, limit);
+}
 
 function loadFromApi(key, token, query, limit) {
     if (!key || !token || !query)
