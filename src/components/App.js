@@ -1,9 +1,10 @@
 import React from 'react';
 import { ButtonGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import Group from './Group';
-import cards from '../domain/cards';
-import grouping from '../domain/grouping';
 import './App.css';
+
+const grouping = require('../domain/grouping');
+const cards = require('../domain/cards');
 
 function App(props) {
   const [data, setData] = React.useState({ cards: [] });
