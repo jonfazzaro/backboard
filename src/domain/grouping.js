@@ -1,11 +1,12 @@
-import { groupBy } from 'lodash';
+import { groupBy, orderBy, chain } from 'lodash';
 import moment from 'moment';
 
 export default { by };
 
 function by(items, grouping) {
-    return Object.entries(groupBy(items,
-        (d) => moment(d.dateLastActivity).format(grouping)))
+    return orderBy(Object.entries(groupBy(items,
+        (d) => moment(d.dateLastActivity).format(grouping + " yyyy"))),
+        ([k, i]) => sortKey(k))
         .map(([k, i]) => {
             return {
                 title: title(k, grouping),
@@ -14,24 +15,42 @@ function by(items, grouping) {
         });
 }
 
-function title(key, by) {
+function title(value, by) {
     return {
-        "W": "Week of " + monday(key),
-        "M": month(key),
-        "Q": "Q" + key
-    }[by];
+        "W": "Week of " + monday(value),
+        "M": month(value),
+        "Q": "Q" + value
+    }[by[0]];
 }
 
-function month(number) {
+function month(key) {
+    const parsed = parse(key);
     return moment()
         .date(1)
-        .month(number - 1)
+        .month(parsed.value - 1)
+        .year(parsed.year)
         .format("MMMM yyyy");
 }
 
-function monday(number) {
+function monday(key) {
+    const parsed = parse(key);
     return moment()
         .day("Monday")
-        .week(number)
+        .week(parsed.value)
+        .year(parsed.year)
         .format("MMMM D");
+}
+
+function parse(key) {
+    return {
+        value: key.split(' ')[0],
+        year: key.split(' ')[1]
+    }
+}
+
+function sortKey(key) {
+    const parsed = parse(key);
+    const result = `${parsed.year} ${parsed.value.padStart(2, '0')}`;
+    console.log(`Sort key for ${key} = ${result}.`);
+    return result;
 }
