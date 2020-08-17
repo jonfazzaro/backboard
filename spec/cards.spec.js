@@ -29,7 +29,15 @@ describe("The cards service", () => {
 
         describe("given no cached data", () => {
             beforeEach(async () => {
-                api.fetch.and.returnValue(Promise.resolve([{}, {}, {}]));
+                api.fetch.and.returnValue(Promise.resolve([
+                    {},
+                    {},
+                    {},
+                    { name: "Log time" },
+                    { name: "Review time" },
+                    { name: "What did you learn this week?" },
+                    { name: "Nerd Lunch: Announce" },
+                ]));
                 const result = await subject.load("a-key", "a-token", "a-query", 100)
                 expect(result).toEqual([{}, {}, {}]);
             });

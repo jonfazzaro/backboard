@@ -44,7 +44,6 @@ function top(items, count) {
         });
 }
 
-
 const common = [
     "are",
     "please",

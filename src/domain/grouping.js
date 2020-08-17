@@ -50,7 +50,5 @@ function parse(key) {
 
 function sortKey(key) {
     const parsed = parse(key);
-    const result = `${parsed.year} ${parsed.value.padStart(2, '0')}`;
-    console.log(`Sort key for ${key} = ${result}.`);
-    return result;
+    return `${parsed.year} ${parsed.value.padStart(2, '0')}`;
 }
