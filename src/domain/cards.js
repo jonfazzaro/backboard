@@ -6,10 +6,12 @@ export default { load };
 
 function load(key, token, query, limit) {
     let cachedData = cache.get(query);
-    if (cachedData)
-        return Promise.resolve(JSON.parse(cachedData));
-    else
-        return loadFromApi(key, token, query, limit);
+
+    const data = cachedData ?
+        Promise.resolve(JSON.parse(cachedData)) :
+        loadFromApi(key, token, query, limit);
+
+    return data.then(filterOutNoise);
 }
 
 function loadFromApi(key, token, query, limit) {
@@ -18,7 +20,6 @@ function loadFromApi(key, token, query, limit) {
 
     const uri = `https://api.trello.com/1/search?cards_limit=${limit || 1000}&query=${query}&key=${key}&token=${token}`;
     return api.fetch(uri)
-        .then(filterOutNoise)
         .then(results => {
             cache.set(query, JSON.stringify(results))
             return results;
@@ -26,6 +27,9 @@ function loadFromApi(key, token, query, limit) {
 }
 
 function filterOutNoise(res) {
+    if (!res.cards)
+        return [];
+
     return res.cards.filter(r =>
         !noiseCardNames.find(n => n === r.name))
 }

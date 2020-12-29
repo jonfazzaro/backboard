@@ -5,12 +5,14 @@ import subject from "../src/domain/cards";
 describe("The cards service", () => {
 
     describe("when loading", () => {
+        let res;
 
         describe("given cached data", () => {
             let result;
             beforeEach(async () => {
-                cache.get.and.returnValue("[{}, {}]");
-                api.fetch.and.returnValue(Promise.resolve([{}, {}, {}]));
+                res = { cards: [{}, {}] };
+                cache.get.and.returnValue(JSON.stringify(res));
+                api.fetch.and.returnValue(Promise.resolve(res));
                 result = await subject.load("a-key", "a-token", "a-query", 100)
             });
 
@@ -29,7 +31,7 @@ describe("The cards service", () => {
 
         describe("given no cached data", () => {
             beforeEach(async () => {
-                api.fetch.and.returnValue(Promise.resolve({
+                res = {
                     cards: [
                         {},
                         {},
@@ -39,7 +41,8 @@ describe("The cards service", () => {
                         { name: "What did you learn this week?" },
                         { name: "Nerd Lunch: Announce" },
                     ]
-                }));
+                };
+                api.fetch.and.returnValue(Promise.resolve(res));
                 const result = await subject.load("a-key", "a-token", "a-query", 100)
                 expect(result).toEqual([{}, {}, {}]);
             });
@@ -50,7 +53,7 @@ describe("The cards service", () => {
             });
 
             it("caches the results", () => {
-                expect(cache.set).toHaveBeenCalledWith("a-query", JSON.stringify([{}, {}, {}]));
+                expect(cache.set).toHaveBeenCalledWith("a-query", JSON.stringify(res));
             });
 
             expectEmpty("key", null, "a-token", "a-query");
