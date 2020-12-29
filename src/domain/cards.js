@@ -25,8 +25,8 @@ function loadFromApi(key, token, query, limit) {
         });
 }
 
-function filterOutNoise(cards) {
-    return cards.filter(r =>
+function filterOutNoise(res) {
+    return res.cards.filter(r =>
         !noiseCardNames.find(n => n === r.name))
 }
 
