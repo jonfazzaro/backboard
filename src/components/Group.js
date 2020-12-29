@@ -34,7 +34,7 @@ function Group(props) {
 }
 
 function sorted(cards) {
-    return orderBy(cards, 'dateLastActivity', 'desc');
+    return orderBy(cards, 'name');
 }
 
 export default Group;
