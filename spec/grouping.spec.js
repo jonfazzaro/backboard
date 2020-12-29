@@ -50,7 +50,7 @@ describe("The grouping service", () => {
                 { dateLastActivity: "2019-12-13" },
             ];
             expect(JSON.stringify(subject.by(cards, "W"))).toEqual(JSON.stringify([
-                { title: "Week of December 7", items: [cards[4]] },
+                { title: "Week of December 9", items: [cards[4]] },
                 { title: "Week of March 30", items: [cards[1]] },
                 { title: "Week of April 13", items: [cards[2], cards[3]] },
                 { title: "Week of May 18", items: [cards[0]] },

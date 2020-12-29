@@ -35,9 +35,9 @@ function month(key) {
 function monday(key) {
     const parsed = parse(key);
     return moment()
-        .day("Monday")
+        .weekYear(parsed.year)
         .week(parsed.value)
-        .year(parsed.year)
+        .day("Monday")
         .format("MMMM D");
 }
 
