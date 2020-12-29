@@ -5,7 +5,7 @@ import cards from "../domain/cards";
 import Group from './Group';
 
 function App(props) {
-  const [data, setData] = React.useState({ cards: [] });
+  const [data, setData] = React.useState([]);
   const [groupBy, setGroupBy] = React.useState("W");
   const [query, setQuery] = React.useState("board:Work list:Done is:archived edited:90")
   const [trelloKey, setTrelloKey] = React.useState("");
@@ -45,7 +45,7 @@ function App(props) {
       </Row>
     </div>
 
-    {grouping.by(data.cards, groupBy)
+    {grouping.by(data, groupBy)
       .map((g, key) => <Group key={key} title={g.title} cards={g.items} />)}
   </div>
 
