@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Card(props) {
+function Card({data, prefix}) {
     return <li className="truncated">
-        <a href={props.data.url} target="_blank" rel="noopener noreferrer" title={props.data.name}>
-            <small>{props.data.name}</small>
+        <a href={data.url} target="_blank" rel="noopener noreferrer" title={data.name}>
+            <small>{data.name.replace(`${prefix}: `, "")}</small>
         </a>
     </li>
 }

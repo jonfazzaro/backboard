@@ -4,6 +4,7 @@ import words from "../domain/words";
 import Cloud from './Cloud';
 import Card from './Card';
 import Pie from './Pie';
+import Cards from './Cards';
 
 function Group(props) {
     const [showCards, setShowCards] = React.useState(false);
@@ -19,10 +20,7 @@ function Group(props) {
         <br />
 
         {showCards ?
-            <ul className="cardlist">
-                {sorted(props.cards)
-                    .map((c, key) => <Card key={key} data={c} />)}
-            </ul>
+            <Cards cards={props.cards} />
             :
             <div>
                 <Cloud words={words.prefixes(props.cards)
@@ -31,10 +29,6 @@ function Group(props) {
         }
 
     </div>
-}
-
-function sorted(cards) {
-    return orderBy(cards, 'name');
 }
 
 export default Group;

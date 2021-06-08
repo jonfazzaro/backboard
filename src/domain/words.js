@@ -1,6 +1,6 @@
 import { flatten, chain, countBy } from 'lodash';
 
-export default { tags, prefixes, words, top }
+export default { tags, prefixes, words, top, prefix }
 
 function tags(cards) {
     return flatten(
