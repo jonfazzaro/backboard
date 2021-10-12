@@ -19,8 +19,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jasmine",
-    "tdd": "nodemon --ext js --exec 'jasmine'",
+    "test": "npx jasmine",
+    "tdd": "npx nodemon --ext js --exec 'jasmine'",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
