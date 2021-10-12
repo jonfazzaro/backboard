@@ -5,9 +5,9 @@ export default { group };
 
 function group(cards) {
     return orderBy(
-        uniq(words.prefixes(cards))).map(grouped(cards));
-        // g => g.count, 
-        // "desc");
+        uniq(words.prefixes(cards)).map(grouped(cards)), 
+        g => g.count, 
+        "desc");
 }
 
 function grouped(cards) {
