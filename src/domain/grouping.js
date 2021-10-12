@@ -1,4 +1,4 @@
-import { groupBy, orderBy, chain } from 'lodash';
+import { groupBy, orderBy } from 'lodash';
 import moment from 'moment';
 
 export default { by };
