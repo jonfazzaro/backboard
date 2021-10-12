@@ -1,11 +1,9 @@
 import React from 'react';
-import { uniq, orderBy } from 'lodash';
-import words from "../domain/words";
+import prefixer from '../domain/prefixer';
 import Card from './Card';
 
 function Cards({cards}) {
-    // TODO: move this to the grouping service
-    const groups = orderBy(uniq(words.prefixes(cards))).map(grouped(cards));
+    const groups = prefixer.group(cards);
 
     return (
         <div className="cardlist">
@@ -14,17 +12,6 @@ function Cards({cards}) {
         </div>
     );
 }
-
-function grouped(cards) {
-    return prefix => {
-        const groupCards = byPrefix(cards, prefix);
-        return { prefix, count: groupCards.length, cards: groupCards }
-    }
-
-    function byPrefix(cards, prefix) {
-        return cards.filter(c => words.prefix(c) === prefix);
-    }
-}        
 
 function renderGroup(group, groupKey) {
     return (<ul key={groupKey}>
