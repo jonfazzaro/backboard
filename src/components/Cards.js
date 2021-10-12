@@ -8,7 +8,6 @@ function Cards({cards}) {
     return (
         <div className="cardlist">
             {groups.map(renderGroup)}
-            {renderGroup(byPrefix(cards, null), null)}
         </div>
     );
 }
