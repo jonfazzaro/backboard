@@ -14,7 +14,9 @@ describe("The journal service", () => {
         { name: "Close the day", desc: "Really don't mind" },
         { name: "Journal: Thick as a Brick", desc: "The poet and the painter" },
       ];
-      expect(subject.render(cards)).toEqual("Really don't mind\nThe poet and the painter");
+      expect(subject.render(cards)).toEqual(
+        `Really don't mind
+The poet and the painter`);
     });
   });
 });
