@@ -15,7 +15,11 @@ function render(cards) {
 }
 
 function toJournal(card) {
-  return `## ${moment(card.dateLastActivity).format("LL")}\n\n${card.desc}`;
+  return `## ${format(card.dateLastActivity)}\n\n${card.desc}`;
+}
+
+function format(date) {
+  return moment(date).format("LL");
 }
 
 function toJournalCards(card) {
