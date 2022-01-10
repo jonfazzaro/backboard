@@ -14,8 +14,8 @@ function render(cards) {
     .join("\n\n");
 }
 
-function renderJournals(c) {
-return `## ${moment(c.dateLastActivity).format("LL")}\n\n${c.desc}`
+function renderJournals(card) {
+return `## ${moment(card.dateLastActivity).format("LL")}\n\n${card.desc}`
 }
 
 function toJournalCards(card) {
