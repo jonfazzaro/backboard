@@ -21,6 +21,7 @@
     "build": "react-scripts build",
     "test": "npx jasmine",
     "tdd": "npx nodemon --ext js --exec 'jasmine'",
+    "tcr": "npx nodemon -e js -x \"npx jasmine && git add -A && git commit -m 'wip'\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
