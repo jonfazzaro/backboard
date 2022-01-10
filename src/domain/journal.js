@@ -22,3 +22,5 @@ function toJournalCards(card) {
     return card.name === "Close the day" 
         || card.name.startsWith("Journal:");
 }
+
+const separator = "\n\n";
