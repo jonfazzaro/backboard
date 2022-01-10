@@ -15,7 +15,11 @@ function render(cards) {
 }
 
 function toJournal(card) {
-  return `## ${format(card.dateLastActivity)}\n\n${card.desc}`;
+  return `${header(format(card.dateLastActivity))}\n\n${card.desc}`;
+}
+
+function header(text) {
+  return `## ${text}`;
 }
 
 function date(card) {
