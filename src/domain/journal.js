@@ -9,12 +9,12 @@ function render(cards) {
   return _.chain(cards)
     .filter(toJournalCards)
     .orderBy(date)
-    .map(toJournal)
+    .map(toJournalEntry)
     .value()
     .join(separator);
 }
 
-function toJournal(card) {
+function toJournalEntry(card) {
   return `${header(format(card.dateLastActivity))}\n\n${card.desc}`;
 }
 
