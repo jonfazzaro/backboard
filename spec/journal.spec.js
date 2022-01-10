@@ -10,7 +10,7 @@ describe("The journal service", () => {
   describe("given cards", () => {
     it("renders the content from journal cards", () => {
       expect(subject.render(cards)).toEqual(
-        `Really don't mind
+`Really don't mind
 The poet and the painter`
       );
     });
