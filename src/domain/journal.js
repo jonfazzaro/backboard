@@ -9,3 +9,8 @@ function render(cards) {
     .map(c => c.desc)
     .join("");
 }
+
+function forJournalCards(c) {
+    return c.name === "Close the day" 
+        || c.name.startsWith("Journal:");
+}
