@@ -1,11 +1,15 @@
+import _ from 'lodash';
+
 export default { render };
 
 function render(cards) {
   if (!cards) return "";
 
-  return cards
+  return _.chain(cards)
     .filter(toJournalCards)
+    .orderBy(c => c.dateLastActivity)
     .map(c => c.desc)
+    .value()
     .join("\n");
 }
 
