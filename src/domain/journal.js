@@ -8,7 +8,7 @@ function render(cards) {
 
   return _.chain(cards)
     .filter(toJournalCards)
-    .orderBy(c => c.dateLastActivity)
+    .orderBy(date)
     .map(toJournal)
     .value()
     .join(separator);
@@ -16,6 +16,10 @@ function render(cards) {
 
 function toJournal(card) {
   return `## ${format(card.dateLastActivity)}\n\n${card.desc}`;
+}
+
+function date(card) {
+  return card.dateLastActivity;
 }
 
 function format(date) {
