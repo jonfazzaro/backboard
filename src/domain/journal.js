@@ -4,8 +4,7 @@ function render(cards) {
   if (!cards) return "";
 
   return cards
-    .filter(c => c.name === "Close the day" 
-            || c.name.startsWith("Journal:"))
+    .filter(forJournalCards)
     .map(c => c.desc)
     .join("");
 }
