@@ -32,6 +32,5 @@ function isJournal(card) {
       || card.name.startsWith(journalTag);
 }
 
-const separator = "\n\n";
 const dailyTitle = "Close the day";
 const journalTag = "Journal:";
