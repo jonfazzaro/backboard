@@ -21,5 +21,16 @@ describe("The journal service", () => {
         ).toEqual("Let's do this");
       });
     });
+
+    describe('tagged with "Journal"', () => {
+      it("renders its content", () => {
+        expect(
+          subject.render([{ name: "Journal: Thick as a Brick", desc: "The poet and the painter" }])
+        ).toEqual("The poet and the painter");
+      });
+        
+    });
   });
+
+  
 });
