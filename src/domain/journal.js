@@ -4,8 +4,6 @@ import moment from "moment";
 export default { entries };
 
 function entries(cards) {
-  if (!cards) return []
-
   return _.chain(cards)
     .filter(isJournal)
     .orderBy(date)
