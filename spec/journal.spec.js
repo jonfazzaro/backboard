@@ -17,7 +17,7 @@ describe("The journal service", () => {
     describe('labeled "Close the day"', () => {
       it("renders its content", () => {
         expect(
-          subject.render([{ name: "Close the day", desc: "let's do this" }])
+          subject.render([{ name: "Close the day", desc: "Let's do this" }])
         ).toEqual("Let's do this");
       });
     });

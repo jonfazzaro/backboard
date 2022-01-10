@@ -1,7 +1,10 @@
 export default {render};
 
 function render(cards) {
-    if (cards && cards.length && cards[0].name == "Close the day")
-        return "Let's do this";
-    return "";
+    if (!cards)
+        return "";
+    return cards
+        .filter(c => c.name === "Close the day")
+        .map(c => c.desc)
+        .join("");
 }
