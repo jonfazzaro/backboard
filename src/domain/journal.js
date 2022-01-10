@@ -24,7 +24,7 @@ function title(card) {
 
 function journalTitle(card) {
   return card.name.replace(journalTag, "").trim() 
-       + `\n*${format(card.dateLastActivity)}*`;
+       + `\n### ${format(card.dateLastActivity)}`;
 }
 
 function header(text) {
