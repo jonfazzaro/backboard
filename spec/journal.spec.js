@@ -11,10 +11,10 @@ describe("The journal service", () => {
     it("renders the content from journal cards", () => {
       const cards = [
         { name: "Horse shoes", desc: "trill" },
-        { name: "Close the day", desc: "Let's do this" },
+        { name: "Close the day", desc: "Really don't mind" },
         { name: "Journal: Thick as a Brick", desc: "The poet and the painter" },
       ];
-      expect(subject.render(cards)).toEqual("Let's do this\nThe poet and the painter");
+      expect(subject.render(cards)).toEqual("Really don't mind\nThe poet and the painter");
     });
   });
 });
