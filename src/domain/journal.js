@@ -6,7 +6,7 @@ function render(cards) {
   return cards
     .filter(toJournalCards)
     .map(c => c.desc)
-    .join("");
+    .join("\n");
 }
 
 function toJournalCards(card) {
