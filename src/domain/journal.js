@@ -27,7 +27,10 @@ function format(date) {
 }
 
 function toJournalCards(card) {
-  return card.name === "Close the day" || card.name.startsWith("Journal:");
+  return card.name === dailyTitle 
+      || card.name.startsWith(journalTag);
 }
 
 const separator = "\n\n";
+const dailyTitle = "Close the day";
+const journalTag = "Journal:";
