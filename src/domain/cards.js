@@ -35,8 +35,9 @@ function filterOutNoise(res) {
 }
 
 const noiseCardNames = [
-    "Log time",
-    "Review time",
     "What did you learn this week?",
-    "Nerd Lunch: Announce"
+    "Share your schedule for the week",
+    "Submit your timesheet",
+    "Emphasis Mine",
+    "Prune"
 ];
