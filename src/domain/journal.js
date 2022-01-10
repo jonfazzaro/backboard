@@ -7,7 +7,7 @@ function render(cards) {
   if (!cards) return "";
 
   return _.chain(cards)
-    .filter(toJournalCards)
+    .filter(isJournal)
     .orderBy(date)
     .map(toJournalEntry)
     .value()
@@ -30,7 +30,7 @@ function format(date) {
   return moment(date).format("LL");
 }
 
-function toJournalCards(card) {
+function isJournal(card) {
   return card.name === dailyTitle 
       || card.name.startsWith(journalTag);
 }
