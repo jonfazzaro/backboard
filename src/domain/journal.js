@@ -1,17 +1,16 @@
 import _ from "lodash";
 import moment from "moment";
 
-export default { render };
+export default { entries };
 
-function render(cards) {
-  if (!cards) return "";
+function entries(cards) {
+  if (!cards) return []
 
   return _.chain(cards)
     .filter(isJournal)
     .orderBy(date)
     .map(toJournalEntry)
-    .value()
-    .join(separator);
+    .value();
 }
 
 function toJournalEntry(card) {

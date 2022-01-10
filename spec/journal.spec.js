@@ -3,25 +3,25 @@ import subject from "../src/domain/journal";
 describe("The journal service", () => {
   describe("given no cards", () => {
     it("renders an empty string", () => {
-      expect(subject.render()).toEqual("");
+      expect(subject.entries()).toEqual([]);
     });
   });
 
   describe("given cards", () => {
     it("renders the journal", () => {
-      expect(subject.render(cards)).toEqual(expected);
+      expect(subject.entries(cards)).toEqual(expected);
     });
   });
 });
 
-const expected = 
+const expected = [
 `## December 1, 2021
 
-Really don't mind
+Really don't mind`,
+`## December 15, 2021
 
-## December 15, 2021
-
-The poet and the painter`;
+The poet and the painter`
+];
 
 const cards = [
   {
