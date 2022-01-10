@@ -85,7 +85,7 @@ li {
   font-size: 80%;
  }
  .journal > ul {
-  /* column-count: 4; */
+  column-count: 3;
 }
 
 .journal .entry
