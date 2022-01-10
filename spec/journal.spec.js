@@ -25,12 +25,25 @@ describe("The journal service", () => {
     describe('tagged with "Journal"', () => {
       it("renders its content", () => {
         expect(
-          subject.render([{ name: "Journal: Thick as a Brick", desc: "The poet and the painter" }])
+          subject.render([
+            {
+              name: "Journal: Thick as a Brick",
+              desc: "The poet and the painter",
+            },
+          ])
         ).toEqual("The poet and the painter");
       });
-        
     });
   });
 
-  
+  describe("given cards", () => {
+    it("renders the content from journal cards", () => {
+      const cards = [
+        { name: "Horse shoes", desc: "trill" },
+        { name: "Close the day", desc: "Let's do this" },
+        { name: "Journal: Thick as a Brick", desc: "The poet and the painter" },
+      ];
+      expect(subject.render(cards)).toEqual("Let's do thisThe poet and the painter");
+    });
+  });
 });
