@@ -18,7 +18,7 @@ The poet and the painter`
 });
 
 const cards = [
-  { name: "Horse shoes", desc: "trill" },
-  { name: "Close the day", desc: "Really don't mind" },
-  { name: "Journal: Thick as a Brick", desc: "The poet and the painter" },
+  { name: "Horse shoes", desc: "trill", dateLastActivity: "2022-01-01T18:33:02.714Z" },
+  { name: "Close the day", desc: "Really don't mind", dateLastActivity: "2021-12-01T18:33:02.714Z" },
+  { name: "Journal: Thick as a Brick", desc: "The poet and the painter", dateLastActivity: "2021-12-15T18:33:02.714Z" },
 ];
