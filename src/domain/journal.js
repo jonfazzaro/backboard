@@ -9,7 +9,7 @@ function render(cards) {
     .join("");
 }
 
-function forJournalCards(c) {
-    return c.name === "Close the day" 
-        || c.name.startsWith("Journal:");
+function forJournalCards(card) {
+    return card.name === "Close the day" 
+        || card.name.startsWith("Journal:");
 }
