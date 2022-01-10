@@ -9,9 +9,13 @@ function render(cards) {
   return _.chain(cards)
     .filter(toJournalCards)
     .orderBy(c => c.dateLastActivity)
-    .map(c => `## ${moment(c.dateLastActivity).format("LL")}\n\n${c.desc}`)
+    .map(renderJournals)
     .value()
     .join("\n\n");
+}
+
+function renderJournals(c) {
+return `## ${moment(c.dateLastActivity).format("LL")}\n\n${c.desc}`
 }
 
 function toJournalCards(card) {
