@@ -19,7 +19,7 @@ function title(card) {
   if (card.name === dailyTitle)
     return format(card.dateLastActivity);
 
-  return card.name.replace(journalTag, "").trim();
+  return card.name.replace(journalTag, "").trim() + `\n*${format(card.dateLastActivity)}*`;
 }
 
 function header(text) {
