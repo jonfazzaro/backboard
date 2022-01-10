@@ -11,7 +11,7 @@ function render(cards) {
     .orderBy(c => c.dateLastActivity)
     .map(renderJournals)
     .value()
-    .join("\n\n");
+    .join(separator);
 }
 
 function renderJournals(card) {
