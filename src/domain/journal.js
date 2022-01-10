@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import moment from 'moment';
 
 export default { render };
 
@@ -8,9 +9,9 @@ function render(cards) {
   return _.chain(cards)
     .filter(toJournalCards)
     .orderBy(c => c.dateLastActivity)
-    .map(c => c.desc)
+    .map(c => `## ${moment(c.dateLastActivity).format("LL")}\n\n${c.desc}`)
     .value()
-    .join("\n");
+    .join("\n\n");
 }
 
 function toJournalCards(card) {
