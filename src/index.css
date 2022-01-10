@@ -33,7 +33,7 @@ li {
   border-radius: .3rem;
 }
 
-.cardlist {
+.cardlist, .journal {
   width: 100%;
   padding: 1rem;
 }
@@ -79,3 +79,29 @@ li {
 .cloud {
   width: 100%;
 }
+
+.journal
+ {
+  font-size: 80%;
+ }
+ .journal > ul {
+  /* column-count: 4; */
+}
+
+.journal .entry
+{
+ padding-bottom: 2rem;
+}
+
+.journal .entry h2,
+.journal .entry h3,
+.journal .entry h4,
+.journal .entry h5,
+.journal .entry h6 {
+
+  color: #aaa;
+}
+
+.journal h1 { font-size: 2rem;}
+.journal h2 { font-size: 1.5rem;}
+.journal h3 { font-size: 1rem;}
