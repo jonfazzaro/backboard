@@ -4,12 +4,12 @@ function render(cards) {
   if (!cards) return "";
 
   return cards
-    .filter(forJournalCards)
+    .filter(toJournalCards)
     .map(c => c.desc)
     .join("");
 }
 
-function forJournalCards(card) {
+function toJournalCards(card) {
     return card.name === "Close the day" 
         || card.name.startsWith("Journal:");
 }
