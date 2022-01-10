@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import moment from 'moment';
+import _ from "lodash";
+import moment from "moment";
 
 export default { render };
 
@@ -15,12 +15,11 @@ function render(cards) {
 }
 
 function toJournal(card) {
-return `## ${moment(card.dateLastActivity).format("LL")}\n\n${card.desc}`
+  return `## ${moment(card.dateLastActivity).format("LL")}\n\n${card.desc}`;
 }
 
 function toJournalCards(card) {
-    return card.name === "Close the day" 
-        || card.name.startsWith("Journal:");
+  return card.name === "Close the day" || card.name.startsWith("Journal:");
 }
 
 const separator = "\n\n";
