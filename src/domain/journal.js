@@ -15,11 +15,11 @@ function render(cards) {
 }
 
 function toJournalEntry(card) {
-  return `${header(format(card.dateLastActivity))}\n\n${card.desc}`;
+  return `${header(format(card.dateLastActivity))}${card.desc}`;
 }
 
 function header(text) {
-  return `## ${text}`;
+  return `## ${text}\n\n`;
 }
 
 function date(card) {

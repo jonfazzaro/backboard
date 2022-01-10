@@ -1,6 +1,5 @@
 import api from './api';
 import cache from './cache';
-import _ from 'lodash';
 
 export default { load };
 

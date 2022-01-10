@@ -22,7 +22,7 @@ function Group(props) {
       {showCards ? (
         <>
           <Cards cards={props.cards} />
-          <Journal></Journal>
+          <Journal cards={props.cards} />
         </>
       ) : (
         <>
