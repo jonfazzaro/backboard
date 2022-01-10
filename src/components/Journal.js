@@ -6,7 +6,7 @@ function Journal(props) {
   return (
     <div className="journal">
       <h1>Journal</h1>
-      {journal.entries(props.cards).map((entry`, i) => (
+      {journal.entries(props.cards).map((entry, i) => (
         <ReactMarkdown key={i}>{entry}</ReactMarkdown>
       ))}
     </div>
