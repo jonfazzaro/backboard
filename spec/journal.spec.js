@@ -18,7 +18,7 @@ const expected = [
 `## December 1, 2021
 
 Really don't mind`,
-`## December 15, 2021
+`## Thick as a Brick
 
 The poet and the painter`
 ];

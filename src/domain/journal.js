@@ -12,7 +12,14 @@ function entries(cards) {
 }
 
 function toJournalEntry(card) {
-  return `${header(format(card.dateLastActivity))}${card.desc}`;
+  return `${header(title(card))}${card.desc}`;
+}
+
+function title(card) {
+  if (card.name === dailyTitle)
+    return format(card.dateLastActivity);
+
+  return card.name.replace(journalTag, "").trim();
 }
 
 function header(text) {
