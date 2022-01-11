@@ -16,13 +16,14 @@ function Group(props) {
   return (
     <div className="group">
       <Row>
-        <Col>
+        <Col md={4}>
           <Pie cards={props.cards} size={50} />
           <div className="header">
             <h2>{props.title}</h2>
             <small>{props.cards.length} cards</small>
           </div>
         </Col>
+        <Col sm={0}></Col>
         <Col>
           <Form className="display">
             <ButtonGroup aria-label="Grouping">

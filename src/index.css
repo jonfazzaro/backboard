@@ -30,9 +30,9 @@ form {
 form.query {
   display: flex;
 }
-form.auth,
-form.display {
-  justify-content: flex-end;
+
+.group .header {
+  margin-bottom: 1rem;
 }
 
 .popover {
@@ -119,6 +119,7 @@ form.display {
   form.auth,
   form.display {
     display: flex;
+    justify-content: flex-end;
   }
 }
 
