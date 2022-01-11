@@ -29,7 +29,7 @@ form {
 form.query {
   display: flex;
 }
-form.auth {
+form.auth, form.display {
   justify-content: flex-end;
 }
 
@@ -58,7 +58,7 @@ form.auth {
     margin-bottom: auto;
   }
 
-  form.auth {
+  form.auth, form.display {
     display: flex;
   }
 }
@@ -118,7 +118,9 @@ form.auth {
 .journal .entry h5,
 .journal .entry h6 {
 
-  color: #aaa;
+  /* color: #aaa; */
+  margin-top:1rem;
+  margin-bottom: 0;
 }
 
 .journal h1 { font-size: 2rem;}
