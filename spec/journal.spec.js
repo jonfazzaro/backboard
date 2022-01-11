@@ -15,7 +15,7 @@ describe("The journal service", () => {
 });
 
 const expected = [
-`## December 1, 2021
+`## December 13, 2021
 
 Really don't mind`,
 `## Thick as a Brick
@@ -26,18 +26,21 @@ The poet and the painter`
 
 const cards = [
   {
+    id: "61a5afd093085uqj34it",
     name: "Horse shoes",
     desc: "trill",
     dateLastActivity: "2022-01-01T18:33:02.714Z",
   },
   {
+    id: "619097d0293085uqj34it",
     name: "Journal: Thick as a Brick",
     desc: "The poet and the painter",
     dateLastActivity: "2021-12-15T18:33:02.714Z",
   },
   {
+    id: "61b6d350q90238u458",
     name: "Close the day",
     desc: "Really don't mind",
-    dateLastActivity: "2021-12-01T18:33:02.714Z",
+    dateLastActivity: "2021-12-20T18:33:02.714Z",
   },
 ];

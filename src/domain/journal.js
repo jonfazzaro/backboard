@@ -4,35 +4,50 @@ import moment from "moment";
 export default { entries };
 
 function entries(cards) {
-  return _.chain(cards)
+  const journalCards = _.chain(cards)
     .filter(isJournal)
     .orderBy(date)
-    .map(toJournalEntry)
     .value();
+    
+  return journalCards.map(toJournalEntry);
 }
 
 function toJournalEntry(card) {
-  return `${header(title(card))}${card.desc}`;
+  return [
+    header(2, title(card)), 
+    newLine, 
+    newLine, 
+    card.desc
+  ].join("");
 }
 
 function title(card) {
   if (card.name === dailyTitle)
-    return format(card.dateLastActivity);
+    return format(createdDate(card));
 
   return journalTitle(card);
 }
 
-function journalTitle(card) {
-  return card.name.replace(journalTag, "").trim() 
-       + `\n### ${format(card.dateLastActivity)}`;
+function createdDate(card) {
+  return new Date(1000*parseInt(card.id.substring(0,8),16));
 }
 
-function header(text) {
-  return `## ${text}\n\n`;
+function journalTitle(card) {
+  return [
+    card.name.replace(journalTag, "").trim(), 
+    newLine, 
+    header(3, format(card.dateLastActivity))
+  ].join("");
+}
+
+function header(level, text) {
+  return `${"#".repeat(level)} ${text}`;
 }
 
 function date(card) {
-  return card.dateLastActivity;
+  if (card.name === dailyTitle)
+    return createdDate(card);
+  return new Date(card.dateLastActivity);
 }
 
 function format(date) {
@@ -46,3 +61,4 @@ function isJournal(card) {
 
 const dailyTitle = "Close the day";
 const journalTag = "Journal:";
+const newLine = "\n";
