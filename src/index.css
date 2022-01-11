@@ -22,6 +22,17 @@ li {
   list-style: none;
 }
 
+form {
+  margin-bottom: 1rem;
+}
+
+form.query {
+  display: flex;
+}
+form.auth {
+  justify-content: flex-end;
+}
+
 .popover {
   max-width: none;
 }
@@ -41,6 +52,14 @@ li {
 @media(min-width: 768px){
   .cardlist {
     column-count: 2;
+  }
+
+  form {
+    margin-bottom: auto;
+  }
+
+  form.auth {
+    display: flex;
   }
 }
 
