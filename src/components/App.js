@@ -7,7 +7,7 @@ import Group from './Group';
 function App() {
   const [data, setData] = React.useState([]);
   const [isAuthenticating, setIsAuthenticating] = React.useState(false);
-  const [groupBy, setGroupBy] = React.useState("W");
+  const [groupBy, setGroupBy] = React.useState("Q");
   const [query, setQuery] = React.useState("board:Work list:Done is:archived edited:90")
   const [trelloKey, setTrelloKey] = React.useState("");
   const [trelloToken, setTrelloToken] = React.useState("");
@@ -45,17 +45,17 @@ function App() {
           {isAuthenticated() &&
             <Form onSubmit={enter} className="query">
               <Form.Control type="text" placeholder="Search query" value={query} onChange={(e) => setQuery(e.target.value)} />
-              <Button variant="primary" type="submit">Load</Button>
+              <Button variant={isLoaded() ? "outline-primary" : "primary" } type="submit">Load</Button>
             </Form>
             }
         </Col>
         <Col md={4}>
-          {isLoaded() && 
+          {isAuthenticated() && isLoaded() && 
             <Form className="grouping">
               <ButtonGroup aria-label="Grouping">
-                <Button variant="secondary" onClick={() => setGroupBy("W")}>Week</Button>
-                <Button variant="secondary" onClick={() => setGroupBy("M")}>Month</Button>
-                <Button variant="secondary" onClick={() => setGroupBy("Q")}>Quarter</Button>
+                <Button variant="info" active={groupBy==="W"} onClick={() => setGroupBy("W")}>Week</Button>
+                <Button variant="info" active={groupBy==="M"} onClick={() => setGroupBy("M")}>Month</Button>
+                <Button variant="info" active={groupBy==="Q"} onClick={() => setGroupBy("Q")}>Quarter</Button>
               </ButtonGroup>
             </Form>
           }
