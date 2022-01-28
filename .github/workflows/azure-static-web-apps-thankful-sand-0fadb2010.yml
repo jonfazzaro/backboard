@@ -30,6 +30,7 @@ jobs:
           app_location: "src" # App source code path
           output_location: "public" # Built app content directory - optional
           app_build_command: "npm run test && npm run build"
+          skip_app_build: true
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
