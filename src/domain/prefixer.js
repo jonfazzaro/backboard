@@ -21,6 +21,8 @@ function grouped(cards) {
     }
 
     function byPrefix(cards, prefix) {
-        return cards.filter(c => words.prefix(c) === prefix);
+        return orderBy(
+            cards.filter(c => words.prefix(c) === prefix), 
+            "dateLastActivity");
     }
 }        
