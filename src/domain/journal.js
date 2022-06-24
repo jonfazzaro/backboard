@@ -14,15 +14,17 @@ function entries(cards) {
 
 function stories(cards) {
   const journal = entries(cards)
-  return journal.flatMap(card => {
-    const matches = card.match(storiesRegex)
-    if (matches)
-      return matches.groups.stories
-        .trim()
-        .split('\n')
-        .map(e => e.trim())
-    return []
-  })
+  return journal.flatMap(toStories)
+}
+
+function toStories(card) {
+  const matches = card.match(storiesRegex)
+  if (matches)
+    return matches.groups.stories
+      .trim()
+      .split('\n')
+      .map(e => e.trim())
+  return []
 }
 
 function toJournalEntry(card) {
