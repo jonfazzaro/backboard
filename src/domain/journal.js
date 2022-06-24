@@ -20,7 +20,7 @@ function stories(cards) {
       return matches.groups.stories
         .trim()
         .split('\n')
-        .map(s => s.trim())
+        .map(e => e.trim())
     return []
   })
 }
