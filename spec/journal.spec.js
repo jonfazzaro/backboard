@@ -12,6 +12,15 @@ describe("The journal service", () => {
       expect(subject.entries(cards)).toEqual(expected);
     });
   });
+
+  describe("when parsing stories", () => {
+    it("returns a bulleted list", () => {
+      expect(subject.stories(cards)).toEqual([
+        "- Well then he says to me he says",
+        "- 'you got a pineapple for a face, you know that?  '",
+      ]);
+    });
+  });
 });
 
 const expected = [
@@ -24,9 +33,9 @@ const expected = [
     "  - 'you got a pineapple for a face, you know that?  '\n" +
     "\n",
 
-  "## Thick as a Brick\n"
-+ "### December 15, 2021\n\n"
-+ "The poet and the painter",
+  "## Thick as a Brick\n" +
+    "### December 15, 2021\n\n" +
+    "The poet and the painter",
 ];
 
 const cards = [

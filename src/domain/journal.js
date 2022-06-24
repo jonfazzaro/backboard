@@ -1,7 +1,7 @@
 import _ from "lodash";
 import moment from "moment";
 
-export default { entries };
+export default { entries, stories };
 
 function entries(cards) {
   const journalCards = _.chain(cards)
@@ -10,6 +10,19 @@ function entries(cards) {
     .value();
     
   return journalCards.map(toJournalEntry);
+}
+
+function stories(cards) {
+  const journal = entries(cards)
+  return journal.flatMap(card => {
+    const matches = card.match(/### Where's the story\?\s+(?<stories>.+)/s)
+    if (matches)
+      return matches.groups.stories
+        .trim()
+        .split('\n')
+        .map(s => s.trim())
+    return []
+  })
 }
 
 function toJournalEntry(card) {
