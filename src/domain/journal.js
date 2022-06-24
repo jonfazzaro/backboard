@@ -15,7 +15,7 @@ function entries(cards) {
 function stories(cards) {
   const journal = entries(cards)
   return journal.flatMap(card => {
-    const matches = card.match(/### Where's the story\?\s+(?<stories>.+)/s)
+    const matches = card.match(storiesRegex)
     if (matches)
       return matches.groups.stories
         .trim()
@@ -75,3 +75,4 @@ function isJournal(card) {
 const dailyTitle = "Close the day";
 const journalTag = "Journal:";
 const newLine = "\n";
+const storiesRegex = /### Where's the story\?\s+(?<stories>.+)/s
