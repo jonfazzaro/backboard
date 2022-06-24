@@ -2,7 +2,7 @@ import React from "react";
 import journal from "../domain/journal";
 import ReactMarkdown from "react-markdown";
 
-function Journal(props) {
+function Stories(props) {
   return (
     <div className="journal">
       <ul>
