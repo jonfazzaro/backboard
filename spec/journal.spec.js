@@ -15,13 +15,18 @@ describe("The journal service", () => {
 });
 
 const expected = [
-`## December 13, 2021
+  "## December 13, 2021\n\n" +
+    "Really don't mind\n" +
+    "\n" +
+    "     ### Where's the story?  \n" +
+    "  \n" +
+    "    - Well then he says to me he says  \n" +
+    "  - 'you got a pineapple for a face, you know that?  '\n" +
+    "\n",
 
-Really don't mind`,
-`## Thick as a Brick
-### December 15, 2021
-
-The poet and the painter`
+  "## Thick as a Brick\n"
++ "### December 15, 2021\n\n"
++ "The poet and the painter",
 ];
 
 const cards = [
@@ -40,7 +45,14 @@ const cards = [
   {
     id: "61b6d350q90238u458",
     name: "Close the day",
-    desc: "Really don't mind",
+    desc:
+      "Really don't mind\n" +
+      "\n" +
+      "     ### Where's the story?  \n" +
+      "  \n" +
+      "    - Well then he says to me he says  \n" +
+      "  - 'you got a pineapple for a face, you know that?  '\n" +
+      "\n",
     dateLastActivity: "2021-12-20T18:33:02.714Z",
   },
 ];
