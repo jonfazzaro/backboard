@@ -4,9 +4,9 @@ import ReactMarkdown from "react-markdown";
 
 function Stories(props) {
   return (
-    <div className="journal">
+    <div className="stories">
       <ul>
-      {journal.entries(props.cards).map((entry, i) => (
+      {journal.stories(props.cards).map((entry, i) => (
         <li className="entry">
           <ReactMarkdown key={i}>{entry}</ReactMarkdown>
         </li>
