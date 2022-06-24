@@ -18,13 +18,16 @@ function stories(cards) {
 }
 
 function toStories(card) {
-  const matches = card.match(storiesRegex)
+  return parseStories(card.match(storiesRegex))
+}
+
+function parseStories(matches) {
   if (matches)
-    return matches.groups.stories
-      .trim()
-      .split('\n')
-      .map(e => e.trim())
-  return []
+  return matches.groups.stories
+    .trim()
+    .split('\n')
+    .map(e => e.trim())
+return []
 }
 
 function toJournalEntry(card) {
