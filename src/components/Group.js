@@ -5,9 +5,11 @@ import Cloud from "./Cloud";
 import Pie from "./Pie";
 import Cards from "./Cards";
 import Journal from "./Journal";
+import Stories from "./Stories";
 
 const CLOUD = "cloud";
 const JOURNAL = "journal";
+const STORIES = "stories";
 const CARDS = "cards";
 
 function Group(props) {
@@ -48,6 +50,13 @@ function Group(props) {
               >
                 Journal
               </Button>
+              <Button
+                variant="outline-info"
+                active={display === STORIES}
+                onClick={() => setDisplay(STORIES)}
+              >
+                Stories
+              </Button>
             </ButtonGroup>
           </Form>
         </Col>
@@ -62,6 +71,8 @@ function Group(props) {
       {display === CARDS && <Cards cards={props.cards} />}
 
       {display === JOURNAL && <Journal cards={props.cards} />}
+
+      {display === STORIES && <Stories cards={props.cards} />}
     </div>
   );
 }
