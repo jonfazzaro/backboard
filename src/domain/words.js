@@ -148,5 +148,9 @@ const common = [
     "all",
     "after",
     "about",
-    "a"
+    "a",
+    "was",
+    "were",
+    "had",
+    "am"
 ];
