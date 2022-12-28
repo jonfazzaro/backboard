@@ -152,5 +152,8 @@ const common = [
     "was",
     "were",
     "had",
-    "am"
+    "am",
+    "close",
+    "has",
+    "been",
 ];
