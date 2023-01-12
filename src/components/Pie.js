@@ -16,6 +16,8 @@ function Pie(props) {
                     "Make Safety a Prerequisite": '#a0bce2',
                     "Make People Awesome": '#fad25c',
                     "Experiment & Learn Rapidly": '#f97977',
+                    "Shallow": '#F5EA92',
+                    "Deep": '#5BA4CF',
                 }
             }}
             pie={{
