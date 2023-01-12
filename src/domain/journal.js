@@ -1,5 +1,5 @@
 import _ from "lodash";
-import moment from "moment";
+import { DateTime } from "luxon";
 
 export default { entries, stories };
 
@@ -38,7 +38,7 @@ function title(card) {
 }
 
 function createdDate(card) {
-  return new Date(1000 * parseInt(card.id.substring(0, 8), 16));
+  return new Date(1000 * parseInt(card.id.substring(0, 8), 16)).toISOString();
 }
 
 function journalTitle(card) {
@@ -55,11 +55,11 @@ function header(level, text) {
 
 function date(card) {
   if (card.name === dailyTitle) return createdDate(card);
-  return new Date(card.dateLastActivity);
+  return card.dateLastActivity;
 }
 
 function format(date) {
-  return moment(date).format("LL");
+  return DateTime.fromISO(date).toFormat("DDD")
 }
 
 function isJournal(card) {

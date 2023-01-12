@@ -10,7 +10,6 @@
     "caniuse-lite": "^1.0.30001298",
     "lodash": "^4.17.21",
     "luxon": "^3.2.1",
-    "moment": "^2.29.4",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-c3js": "^0.1.20",
