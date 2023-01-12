@@ -15,7 +15,7 @@ describe("The grouping service", () => {
                 { dateLastActivity: "2020-04-01" },
                 { dateLastActivity: "2020-03-12" },
             ];
-            expect(JSON.stringify(subject.by(cards, "Q"))).toEqual(JSON.stringify([
+            expect(JSON.stringify(subject.by(cards, "q"))).toEqual(JSON.stringify([
                 { title: "Q1 2020", items: [cards[2]] },
                 { title: "Q2 2020", items: [cards[0], cards[1]] },
             ]));

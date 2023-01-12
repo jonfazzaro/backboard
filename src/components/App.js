@@ -7,7 +7,7 @@ import Group from './Group';
 function App() {
   const [data, setData] = React.useState([]);
   const [isAuthenticating, setIsAuthenticating] = React.useState(false);
-  const [groupBy, setGroupBy] = React.useState("Q");
+  const [groupBy, setGroupBy] = React.useState("q");
   const [query, setQuery] = React.useState("board:Work list:Done is:archived edited:90")
   const [trelloKey, setTrelloKey] = React.useState("");
   const [trelloToken, setTrelloToken] = React.useState("");
@@ -55,7 +55,7 @@ function App() {
               <ButtonGroup aria-label="Grouping">
                 <Button variant="info" active={groupBy==="W"} onClick={() => setGroupBy("W")}>Week</Button>
                 <Button variant="info" active={groupBy==="M"} onClick={() => setGroupBy("M")}>Month</Button>
-                <Button variant="info" active={groupBy==="Q"} onClick={() => setGroupBy("Q")}>Quarter</Button>
+                <Button variant="info" active={groupBy==="q"} onClick={() => setGroupBy("q")}>Quarter</Button>
               </ButtonGroup>
             </Form>
           }
