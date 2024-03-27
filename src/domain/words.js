@@ -1,6 +1,7 @@
 import { flatten, chain, countBy } from 'lodash';
 
-export default { tags, prefixes, words, top, prefix }
+const Words = { tags, prefixes, words, top, prefix };
+export default Words
 
 function tags(cards) {
     return flatten(
@@ -33,7 +34,7 @@ function wordsFrom(card) {
 
 function top(items, count) {
     return chain(Object.entries(countBy(items, i => i.toLowerCase())))
-        .orderBy(([k, c]) => c, 'desc')
+        .orderBy(([_, c]) => c, 'desc')
         .take(count || 10)
         .value()
         .map(([k, c]) => {

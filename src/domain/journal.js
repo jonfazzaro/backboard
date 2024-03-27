@@ -1,7 +1,8 @@
 import _ from "lodash";
 import { DateTime } from "luxon";
 
-export default { entries, stories };
+const Journal = { entries, stories };
+export default Journal;
 
 function entries(cards) {
   const journalCards = _.chain(cards).filter(isJournal).orderBy(date).value();

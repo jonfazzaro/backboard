@@ -1,7 +1,8 @@
 import { groupBy, orderBy } from "lodash";
 import { DateTime } from "luxon";
 
-export default { by };
+const Grouping = { by };
+export default Grouping;
 
 function by(items, grouping) {
   return orderBy(
@@ -10,7 +11,7 @@ function by(items, grouping) {
         DateTime.fromISO(d.dateLastActivity).toFormat(grouping + " yyyy")
       )
     ),
-    ([k, i]) => sortKey(k)
+    ([k, _]) => sortKey(k)
   ).map(([k, i]) => {
     return {
       title: title(k, grouping),

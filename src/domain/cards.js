@@ -1,7 +1,8 @@
 import api from './api';
 import cache from './cache';
 
-export default { load };
+const Cards = { load };
+export default Cards;
 
 function load(key, token, query, limit) {
     let cachedData = cache.get(query);

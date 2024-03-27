@@ -4,7 +4,8 @@ import ReactWordCloud from 'react-wordcloud';
 import words from "../domain/words";
 
 function Cloud(props) {
-    const data = words.top(props.words, 100);
+    const allWords = words.prefixes(props.cards).concat(words.words(props.cards))
+    const data = words.top(allWords, 100);
     return <div className="cloud">
         <ReactWordCloud words={data}
             options={{

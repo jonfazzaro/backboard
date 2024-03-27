@@ -1,7 +1,8 @@
 import words from './words';
 import { orderBy, uniq } from 'lodash';
 
-export default { group };
+const Prefixer = { group };
+export default Prefixer;
 
 function group(cards) {
     return orderBy(
