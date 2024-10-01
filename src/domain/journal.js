@@ -67,7 +67,7 @@ function isJournal(card) {
   return card.name === dailyTitle || card.name.startsWith(journalTag);
 }
 
-const dailyTitle = "Close the day";
+const dailyTitle = "Journal the day";
 const journalTag = "Journal:";
 const newLine = "\n";
 const storiesRegex = /### Where's the story\?\s+(?<stories>.+)/s;

@@ -53,7 +53,7 @@ const cards = [
   },
   {
     id: "61b6d350q90238u458",
-    name: "Close the day",
+    name: "Journal the day",
     desc:
       "Really don't mind\n" +
       "\n" +
