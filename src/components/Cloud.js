@@ -19,6 +19,7 @@ function Cloud(props) {
                 deterministic: true
             }}
         />
+        <p className="top">(<strong>top:</strong> {data.slice(0,10).map(w => w.text).join(", ")})</p>
     </div>
 }
 

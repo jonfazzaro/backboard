@@ -77,6 +77,10 @@ form.query {
 
 .cloud {
   width: 100%;
+  
+  .top {
+    text-align: center;
+  }
 }
 
 .journal {
