@@ -72,10 +72,9 @@ describe("The cards service", () => {
             "",
             "",
             "What did you learn this week?",
-            "Share your schedule for the week",
-            "Submit your timesheet",
-            "Emphasis Mine",
-            "Prune",
+            "Outcomes and work summary for the Weekly Report",
+            "Read: something interesting",
+            "Prune"
           ]),
         };
       }
