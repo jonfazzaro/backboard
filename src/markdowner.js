@@ -1,4 +1,5 @@
-export default {toMarkdown};
+const markdowner = {toMarkdown};
+export default markdowner;
 
 function toMarkdown(groups) {
     return groups
