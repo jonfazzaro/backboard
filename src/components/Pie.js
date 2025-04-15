@@ -1,38 +1,45 @@
 import React from 'react';
 import { countBy } from 'lodash';
-import C3Chart from 'react-c3js';
-import 'c3/c3.css';
+import { Pie as ChartJSPie } from 'react-chartjs-2';
+import 'chart.js/auto';
 
 import words from "../domain/words";
 
 function Pie(props) {
-    return <div className="pie">
-        <C3Chart
-            data={{
-                columns: Object.entries(countBy(words.tags(props.cards))),
-                type: 'pie',
-                colors: {
-                    "Deliver Value Continuously": '#a3d96f',
-                    "Make Safety a Prerequisite": '#a0bce2',
-                    "Make People Awesome": '#fad25c',
-                    "Experiment & Learn Rapidly": '#f97977',
-                    "Shallow": '#F5EA92',
-                    "Deep": '#5BA4CF',
-                }
-            }}
-            pie={{
-                label: {
-                    show: false
-                }
-            }}
-            legend={{
-                show: false
-            }}
-            size={{
-                width: props.size,
-                height: props.size
-            }} />
-    </div>
+    const tagsCount = countBy(words.tags(props.cards));
+
+    const data = {
+        labels: Object.keys(tagsCount),
+        datasets: [{
+            data: Object.values(tagsCount),
+            backgroundColor: [
+                '#F5EA92', // Shallow
+                '#5BA4CF', // Deep
+            ],
+            borderWidth: 0,
+        }]
+    };
+
+    const options = {
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        responsive: false,
+        maintainAspectRatio: false
+    };
+
+    return (
+        <div className="pie">
+            <ChartJSPie
+                data={data}
+                options={options}
+                width={props.size}
+                height={props.size}
+            />
+        </div>
+    );
 }
 
 export default Pie;
