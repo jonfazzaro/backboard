@@ -8,14 +8,6 @@ function Cloud(props) {
     const data = words.top(allWords, 100);
     const fontSizes = props.fontSizes || [20, 100];
 
-    // Calculate font size based on word value
-    const getFontSize = (word) => {
-        const maxValue = Math.max(...data.map(w => w.value));
-        const minValue = Math.min(...data.map(w => w.value));
-        const normalized = (word.value - minValue) / (maxValue - minValue);
-        return fontSizes[0] + normalized * (fontSizes[1] - fontSizes[0]);
-    };
-
     return <div className="cloud">
         <WordCloud
             words={data}
@@ -30,6 +22,13 @@ function Cloud(props) {
         />
         <p className="top">(<strong>top:</strong> {data.slice(0,10).map(w => w.text).join(", ")})</p>
     </div>
+
+    function getFontSize(word) {
+        const maxValue = Math.max(...data.map(w => w.value));
+        const minValue = Math.min(...data.map(w => w.value));
+        const normalized = (word.value - minValue) / (maxValue - minValue);
+        return fontSizes[0] + normalized * (fontSizes[1] - fontSizes[0]);
+    }
 }
 
 export default Cloud;
