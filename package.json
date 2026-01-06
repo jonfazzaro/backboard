@@ -6,6 +6,7 @@
     "node": ">=22.0.0"
   },
   "dependencies": {
+    "@isoterik/react-word-cloud": "^1.0.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
@@ -15,12 +16,11 @@
     "chart.js": "^4.4.9",
     "lodash": "^4.17.21",
     "luxon": "^3.2.1",
-    "react": "^19.0.0",
+    "react": "^19.2.3",
     "react-bootstrap": "^2.10.7",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0",
-    "react-markdown": "^9.0.3",
-    "@isoterik/react-word-cloud": "^1.0.0"
+    "react-markdown": "^9.0.3"
   },
   "overrides": {
     "autoprefixer": "10.4.5"
