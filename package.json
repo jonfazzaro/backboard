@@ -17,11 +17,10 @@
     "luxon": "^3.2.1",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.7",
-    "react-c3js": "^0.1.20",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0",
     "react-markdown": "^9.0.3",
-    "react-wordcloud": "^1.2.3"
+    "@isoterik/react-word-cloud": "^1.0.0"
   },
   "overrides": {
     "autoprefixer": "10.4.5"
