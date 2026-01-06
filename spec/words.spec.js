@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import subject from '../src/domain/words';
 
 describe("The words service", () => {

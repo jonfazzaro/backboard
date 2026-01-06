@@ -17,19 +17,21 @@
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^16.13.1",
     "react-markdown": "^7.1.2",
-    "react-scripts": "5.0.1",
     "react-wordcloud": "^1.2.3"
   },
   "overrides": {
     "autoprefixer": "10.4.5"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "npx jasmine",
-    "tdd": "npx nodemon --ext js --exec 'jasmine'",
-    "tcr": "npx nodemon -e js -x \"npx jasmine && git add -A && git commit -m 'wip'\"",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "tdd": "vitest",
+    "tcr": "npx nodemon -e js -x \"vitest run && git add -A && git commit -m 'wip'\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,6 +49,10 @@
     ]
   },
   "devDependencies": {
-    "jasmine-es6": "^0.4.3"
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/ui": "^4.0.16",
+    "jsdom": "^27.4.0",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16"
   }
 }

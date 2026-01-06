@@ -1,3 +1,4 @@
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import api from "../src/domain/api";
 import cache from "../src/domain/cache";
 import subject from "../src/domain/cards";
@@ -10,8 +11,8 @@ describe("The cards service", () => {
       let result;
       beforeEach(async () => {
         res = { cards: [{}, {}] };
-        cache.get.and.returnValue(JSON.stringify(res));
-        api.fetch.and.returnValue(Promise.resolve(res));
+        cache.get.mockReturnValue(JSON.stringify(res));
+        api.fetch.mockResolvedValue(res);
         result = await subject.load("a-key", "a-token", "a-query", 100);
       });
 
@@ -31,7 +32,7 @@ describe("The cards service", () => {
     describe("given no cached data", () => {
       beforeEach(async () => {
         arrangeCards();
-        api.fetch.and.returnValue(Promise.resolve(res));
+        api.fetch.mockResolvedValue(res);
         const result = await subject.load("a-key", "a-token", "a-query", 100);
         expect(result).toEqual([{ name: "" }, { name: "" }, { name: "" }]);
       });
@@ -53,7 +54,7 @@ describe("The cards service", () => {
       function expectEmpty(field, key, token, resource, query) {
         describe("given no " + field, () => {
           it("returns an empty promise", async () => {
-            api.fetch.calls.reset();
+            api.fetch.mockClear();
             const result = await subject.load(key, token, resource, query);
             expect(result).toEqual([]);
             expect(api.fetch).not.toHaveBeenCalled();
@@ -82,8 +83,8 @@ describe("The cards service", () => {
   });
 
   beforeEach(() => {
-    spyOn(api, "fetch");
-    spyOn(cache, "get").and.returnValue(null);
-    spyOn(cache, "set");
+    vi.spyOn(api, "fetch");
+    vi.spyOn(cache, "get").mockReturnValue(null);
+    vi.spyOn(cache, "set");
   });
 });
