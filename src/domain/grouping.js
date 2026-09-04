@@ -1,5 +1,6 @@
 import { groupBy, orderBy } from "lodash";
-import { DateTime } from "luxon";
+import { Temporal } from "@js-temporal/polyfill";
+import ActivityDate from "./activity-date";
 
 const Grouping = { by };
 export default Grouping;
@@ -8,7 +9,7 @@ function by(items, grouping) {
   return orderBy(
     Object.entries(
       groupBy(items, d =>
-        DateTime.fromISO(d.dateLastActivity).toFormat(grouping + " yyyy")
+        key(ActivityDate.from(d.dateLastActivity), grouping)
       )
     ),
     ([k, _]) => sortKey(k)
@@ -30,20 +31,27 @@ function title(value, by) {
 
 function month(key) {
   const parsed = parse(key);
-  return DateTime.fromObject({
+  return Temporal.PlainDate.from({
+    month: Number(parsed.value),
+    year: Number(parsed.year),
     day: 1,
-    month: parsed.value,
-    year: parsed.year,
-  }).toFormat("MMMM yyyy");
+  }).toLocaleString(undefined, { month: "long", year: "numeric" });
 }
 
 function monday(key) {
   const parsed = parse(key);
-  return DateTime.fromObject({
-    weekYear: parsed.year,
-    weekNumber: parsed.value,
-    weekday: 1
-  }).toFormat("MMMM d");
+  const firstWeekDate = Temporal.PlainDate.from({
+    year: Number(parsed.year),
+    month: 1,
+    day: 4,
+  });
+  const firstMonday = firstWeekDate.subtract({
+    days: firstWeekDate.dayOfWeek - 1,
+  });
+
+  return firstMonday
+    .add({ weeks: Number(parsed.value) - 1 })
+    .toLocaleString(undefined, { month: "long", day: "numeric" });
 }
 
 function parse(key) {
@@ -56,4 +64,12 @@ function parse(key) {
 function sortKey(key) {
   const parsed = parse(key);
   return `${parsed.year} ${parsed.value.padStart(2, "0")}`;
+}
+
+function key(date, grouping) {
+  return {
+    W: `${date.weekOfYear} ${date.year}`,
+    M: `${date.month} ${date.year}`,
+    q: `${Math.ceil(date.month / 3)} ${date.year}`,
+  }[grouping];
 }
