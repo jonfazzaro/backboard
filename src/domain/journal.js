@@ -1,5 +1,6 @@
 import _ from "lodash";
-import { DateTime } from "luxon";
+import { Temporal } from "@js-temporal/polyfill";
+import ActivityDate from "./activity-date";
 
 const Journal = { entries, stories };
 export default Journal;
@@ -39,7 +40,10 @@ function title(card) {
 }
 
 function createdDate(card) {
-  return new Date(1000 * parseInt(card.id.substring(0, 8), 16)).toISOString();
+  const seconds = Number.parseInt(card.id.slice(0, 8), 16);
+
+  return Temporal.Instant.fromEpochMilliseconds(seconds * 1_000)
+    .toString({ fractionalSecondDigits: 3 });
 }
 
 function journalTitle(card) {
@@ -60,7 +64,11 @@ function date(card) {
 }
 
 function format(date) {
-  return DateTime.fromISO(date).toFormat("DDD")
+  return ActivityDate.from(date).toLocaleString(undefined, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 function isJournal(card) {
